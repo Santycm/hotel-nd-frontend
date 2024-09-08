@@ -24,7 +24,7 @@ export const App = () => {
 
   return (
     <>
-      <h1 className="text-[20px] text-black">HORA DESDE LA DB</h1>
+      <h1 className="text-[20px] text-black">HORAAa DESDE LA DB</h1>
       {dbTest.map((item) => {
         return (
           <div key={item.now}>
