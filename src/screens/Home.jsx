@@ -1,3 +1,4 @@
+// En esta carpeta van todas las screens que llevaran en la web
 import React from "react"
 
 export const Home = () => {
