@@ -5,7 +5,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "../screens/Login/Login";
 import { Register } from "../screens/Register/Register";
-import { Home } from "../screens/Home/Home";
+
 
 
 
@@ -15,7 +15,7 @@ function Rutas() {
             <Routes>
                 <Route path="/" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/home" element={<Home/>}/>
+            
             </Routes>
         </BrowserRouter>
     )

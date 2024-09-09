@@ -5,7 +5,7 @@ export const Register = () => {
 
     return (
         <div>
-            Hola nea este es el Register
+            Hola nea este es el Registerrrrrrrrrrrrrrrrrrrrr
         </div>
     )
 
