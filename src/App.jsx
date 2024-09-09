@@ -1,37 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import {API_URL} from "./config.js";
+import Rutas from "./routes/Rutas"; //Importacion de las rutas
 
-export const App = () => {
-  const [dbTest, setDBTest] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch(
-        `${API_URL}/testdb`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      setDBTest([...data]);
-    };
-    getData();
-  }, []);
-
+function App() {
   return (
-    <>
-      <h1 className="text-[20px] text-black">HORAAa DESDE LA DB</h1>
-      {dbTest.map((item) => {
-        return (
-          <div key={item.now}>
-            <p>{item.now}</p>
-          </div>
-        );
-      })}
-    </>
+    <div>
+      <Rutas/>
+    </div>
   );
-};
+}
+
+export default App;

@@ -1,0 +1,1 @@
+// Aca van todas las funciones para tener mejor orden en los otros archivos
