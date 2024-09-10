@@ -1,10 +1,10 @@
 import React from "react"
-import "./Register.css";
+import "./Register.css"
 
 export const Register = () => {
 
     return (
-        <div>
+        <div className="container"> 
             Hola nea este es el Registerrrrrrrrrrrrrrrrrrrrr
         </div>
     )
