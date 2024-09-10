@@ -1,7 +1,7 @@
 import React from "react";
-import { FaUserCircle, FaUserLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import { MdEmail, FaUserLock } from '../../assets/Images'
 
 export const Login = () => {
   return (
@@ -21,8 +21,8 @@ export const Login = () => {
           <form>
             <h1>Login</h1>
             <div className="input-form">
-              <input type="text" placeholder="Username" required />
-              <FaUserCircle className="icon" />
+              <input type="email" placeholder="Email" required />
+              <MdEmail className="icon" />
             </div>
             <div className="input-form">
               <input type="password" placeholder="Password" required />
