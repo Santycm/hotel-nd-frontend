@@ -16,7 +16,7 @@ export const Login = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/login`,data);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`,data);
       console.log(response.data);
       reset();
       navigate("/home");
