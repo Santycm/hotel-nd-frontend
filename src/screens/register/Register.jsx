@@ -14,16 +14,14 @@ export const Register = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      // Directly using localhost:3000 as the base URL
-      const response = await axios.post(`http://localhost:3000/api/register`, data);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, data);
       console.log(response.data); 
       reset();
-      navigation("/login");  // Make sure you use navigate, not navigation
+      navigation("/login")
     } catch (error) {
       console.error('Error:', error);
     }
   });
-
 
   const errorMessages = Object.values(errors).map((error) => error.message);
 
