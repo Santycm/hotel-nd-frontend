@@ -1,131 +1,123 @@
-import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import "./Register.css";
-//install npm i react-hook-form
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const navigation = useNavigate()
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
+    reset,
   } = useForm();
-  console.log(errors);
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/register`, data);
+      console.log(response.data); 
+      reset();
+      navigation("/login")
+    } catch (error) {
+      console.error('Error:', error);
+    }
   });
+
+  const errorMessages = Object.values(errors).map((error) => error.message);
+
   return (
-    <section className="background flex items-center justify-center p-24">
-      <div className="flex flex-col justify-center items-center p-6 border-2 shadow-xl bg-white rounded-lg">
-        <h1 className="font-bold text-2xl">Registration</h1>
+    <section className="background flex items-center justify-center p-2">
+      <div className="flex flex-col justify-center items-center border-2 shadow-lg bg-transparent rounded-lg backdrop-blur-lg border-white/20">
+        <h1 className="font-extrabold text-4xl text-white my-2">Registro</h1>
         <form
           onSubmit={onSubmit}
-          className="flex flex-col justify-center items-center p-8"
+          className="flex flex-col justify-center items-center p-4"
         >
           <input
-            {...register("name", { 
-              required: {
-                value: true,
-                message: 'Nombre requerido'
-              },
+            {...register("name", {
+              required: "Nombre requerido",
               minLength: {
                 value: 2,
-                message: 'El nombre debe contener al menos 2 caracteres'
+                message: "El nombre debe contener al menos 2 caracteres",
               },
               maxLength: 20,
-             })}
-            placeholder="Name"
-            className="w-96 p-2 m-2 border-2"
+            })}
+            placeholder="Nombre"
+            className="input-register"
           />
-          {errors.name && 
-            <span className="errorsMessage">{errors.name.message}</span>
-          }
+
+          <input
+            {...register("lastName", {
+              required: "Apellido requerido",
+              minLength: {
+                value: 2,
+                message: "El apellido debe contener al menos 2 caracteres",
+              },
+              maxLength: 20,
+            })}
+            placeholder="Apellido"
+            className="input-register"
+          />
+
+          <input
+            {...register("cedula", {
+              required: "Cédula requerida",
+              pattern: {
+                value: /^[0-9]{1,10}$/,
+                message: "Cédula: (Debe tener solo números, máximo 10)",
+              },
+            })}
+            placeholder="Cédula"
+            className="input-register"
+          />
+
+          <input
+            {...register("tel", {
+              required: "Teléfono requerido",
+              pattern: {
+                value: /^[0-9]{10}$/,
+                message: "Teléfono: (Debe tener solo números, 10 dígitos)",
+              },
+            })}
+            placeholder="Teléfono"
+            className="input-register"
+          />
+
           <input
             type="email"
-            {...register("email", { 
-            required:{
-              value: true,
-              message: 'Email requerido'
-             },
-            pattern: {
-              value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
-              message: 'Email invalido'
-            },
+            {...register("email", {
+              required: "Email requerido",
+              pattern: {
+                value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                message: "Email inválido",
+              },
             })}
             placeholder="Email"
-            className="w-96 p-2 m-2 border-2"
+            className="input-register"
           />
-          {errors.email &&
-            <span className="errorsMessage">{errors.email.message}</span>
-          }
-          <input
-            type="date"
-            {...register("date", { 
-            required:{
-              value: true,
-              message: 'Fecha de nacimiento requerida'
-            },
-            validate: (value) => {
-              const birthDate = new Date(value);
-              const currentDate = new Date();
-              const age = currentDate.getFullYear() - birthDate.getFullYear();
-              if (age > 18) {
-                return true;
-              } else {
-                return 'Debes ser mayor de 18 años';
-            }
-            }
-           })}
-            placeholder="Fecha nacimiento"
-            className="w-96 p-2 m-2 border-2"
-          />
-           {errors.date && 
-            <span className="errorsMessage">{errors.date.message}</span>
-          }
-          <input
-            type="password"
-            {...register("password", {
-            required: {
-              value: true,
-              message: 'Contraseña requerida'
-            },
-            minLength: {
-              value: 6,
-              message: 'La contraseña debe contener al menos 6 caracteres'
-            },
-            })}
-            placeholder="Password"
-            className="w-96 p-2 m-2 border-2"
-          />
-          {errors.password && 
-            <span className="errorsMessage">{errors.password.message}</span>
-          }
 
           <input
             type="password"
-            {...register("passwordValidate",{
-            required: {
-              value: true,
-              message: 'Confirmar contraseña requerida'
-            },
-            validate: (value) => value === watch('password') || 'Las contraseñas no coinciden'
+            {...register("password", {
+              required: "Contraseña requerida",
+              minLength: {
+                value: 6,
+                message: "La contraseña debe contener al menos 6 caracteres",
+              },
             })}
-            placeholder="Confirm Password"
-            className="w-96 p-2 m-2 border-2"
+            placeholder="Contraseña"
+            className="input-register"
           />
-          {errors.passwordValidate && 
-            <span className="errorsMessage">{errors.passwordValidate.message}</span>
-          }
-          <label htmlFor="terminos">
-            Acepto terminos y condiciones
-            <input
-              type="checkbox"
-              {...register("terminos", { required: true })}
-              className="p-2 m-2 border-2"
-            />
-          </label>
-          <button className="buttonRegister" type="submit">
+
+          {errorMessages.length > 0 && (
+            <div className="error-messages w-11/12 max-h-20 overflow-y-auto bg-transparent text-red-600 font-bold">
+              {errorMessages.map((msg, index) => (
+                <p key={index}>{msg}</p>
+              ))}
+            </div>
+          )}
+
+          <button className="button-register my-4" type="submit">
             Registrar
           </button>
         </form>
