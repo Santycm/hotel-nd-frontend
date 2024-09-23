@@ -47,7 +47,7 @@ export const Register = () => {
           />
 
           <input
-            {...register("lastName", {
+            {...register("lastame", {
               required: "Apellido requerido",
               minLength: {
                 value: 2,
