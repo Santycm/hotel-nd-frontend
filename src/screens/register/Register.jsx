@@ -14,7 +14,7 @@ export const Register = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, data);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/register`, data);
       console.log(response.data); 
       reset();
       navigation("/login")
@@ -47,7 +47,7 @@ export const Register = () => {
           />
 
           <input
-            {...register("lastame", {
+            {...register("lastname", {
               required: "Apellido requerido",
               minLength: {
                 value: 2,
