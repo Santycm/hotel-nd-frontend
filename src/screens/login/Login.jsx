@@ -28,21 +28,21 @@ export const Login = () => {
   const errorMessages = Object.values(errors).map((error) => error.message);
 
   return (
-    <div className="login-screen" style={{ backgroundImage: `url(${fondo})` }}>
-      <div className="flex justify-between items-center w-full max-w-6xl px-16">
-        <div className="info-section text-white p-4 max-w-xs flex-1 mr-96">
-          <h2 className="text-4xl mb-5 font-bold">Hotel la manguita</h2>
-          <p className="text-lg leading-7">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
-            provident rerum corporis aut error quam repellendus. Reiciendis
-            suscipit fugiat obcaecati hic non corrupti aspernatur, sunt omnis
-            eligendi itaque maiores iste!
+    <div className="login-screen"style={{backgroundImage: `url(${fondo})`}}>
+      <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-6xl">
+        <div className="info-section text-white p-4 max-w-xs lg:max-w-md lg:mr-16 mb-8 lg:mb-0">
+         
+          <h2 className="text-3xl lg:text-4xl mb-4 font-bold text-center">Hotel la manguita</h2>
+          
+          <p className="text-sm lg:text-lg leading-7 text-center">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+            provident rerum corporis aut error quam repellendus.
           </p>
         </div>
 
         <div className="login-contenedor">
           <form onSubmit={onSubmit}>
-            <h1 className="mb-5 text-4xl font-extrabold text-white">Login</h1>
+            <h1 className="mb-5 text-2xl lg:text-4xl font-extrabold text-white">Login</h1>
 
             {/* Input de email del login */}
             <div className="relative mb-5">
@@ -82,7 +82,7 @@ export const Login = () => {
             {/* Checkbox para recordar la contraseña */}
             <div className="remember-forgot flex justify-between items-center mb-5">
               <label className="text-white text-sm">
-                <input type="checkbox" /> Recordarme
+                <input type="checkbox" className="mr-2" /> Recordarme
               </label>
               <Link to="" className="text-blue-500 text-sm hover:underline">
                 Olvidé la contraseña
@@ -104,7 +104,7 @@ export const Login = () => {
           </form>
 
           {/* Link para registrar una cuenta */}
-          <div className="register-link mt-5">
+          <div className="register-link mt-5 text-center">
             <p className="text-sm text-white">
               No tienes una cuenta?{" "}
               <Link to="/register" className="text-blue-500 hover:underline">
