@@ -11,7 +11,7 @@ function Rutas() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home/>} />
       </Routes>
