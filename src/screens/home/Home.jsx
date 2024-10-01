@@ -1,4 +1,3 @@
-import React from "react";
 import { Slider } from "/src/components/Slider.jsx";
 import { Cards } from "/src/components/Cards.jsx";
 import fondo from "../../assets/fondo.png";

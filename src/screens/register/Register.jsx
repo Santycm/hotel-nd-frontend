@@ -14,10 +14,10 @@ export const Register = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/register`, data);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, data);
       console.log(response.data); 
       reset();
-      navigation("/login")
+      navigation("/")
     } catch (error) {
       console.error('Error:', error);
     }
@@ -26,8 +26,17 @@ export const Register = () => {
   const errorMessages = Object.values(errors).map((error) => error.message);
 
   return (
-    <section className="background flex items-center justify-center p-2">
-      <div className="flex flex-col justify-center items-center border-2 shadow-lg bg-transparent rounded-lg backdrop-blur-lg border-white/20">
+    <section className="background flex items-center justify-around p-2">
+      <div className="hidden md:block text-white text-center space-y-4 ml-8 animation-up">
+        <h2 className="text-2xl font-bold text-center">¿Por que registrarse?</h2>
+        <ul className="list-disc list-inside text-right">
+          <li>Todavia no se despues miro</li>
+          <li>Todavia no se despues miro</li>
+          <li>Todavia no se despues miro</li>
+          <li>Todavia no se despues miro</li>
+        </ul>
+      </div>
+      <div className="flex flex-col justify-center items-center border-2 shadow-lg bg-transparent rounded-lg backdrop-blur-lg border-white/20 animation-up">
         <h1 className="font-extrabold text-4xl text-white my-2">Registro</h1>
         <form
           onSubmit={onSubmit}
@@ -122,6 +131,7 @@ export const Register = () => {
           </button>
         </form>
       </div>
+      
     </section>
   );
 };

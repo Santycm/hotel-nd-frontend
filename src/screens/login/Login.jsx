@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { MdEmail, FaUserLock } from "../../assets/Images";
 import fondo from "../../assets/fondo.png";
+import { useState } from "react";
 
 export const Login = () => {
+  const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -28,19 +30,20 @@ export const Login = () => {
   const errorMessages = Object.values(errors).map((error) => error.message);
 
   return (
-    <div className="login-screen"style={{backgroundImage: `url(${fondo})`}}>
+    <div className="login-screen" style={{ backgroundImage: `url(${fondo})` }}>
       <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-6xl">
         <div className="info-section text-white p-4 max-w-xs lg:max-w-md lg:mr-16 mb-8 lg:mb-0">
-         
-          <h2 className="text-3xl lg:text-4xl mb-4 font-bold text-center">Hotel la manguita</h2>
-          
-          <p className="text-sm lg:text-lg leading-7 text-center">
+          <h2 className="text-3xl lg:text-4xl mb-4 font-bold text-center animation-rigth">
+            Hotel la manguita
+          </h2>
+
+          <p className="text-sm lg:text-lg leading-7 text-center animation-rigth">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
             provident rerum corporis aut error quam repellendus.
           </p>
         </div>
 
-        <div className="login-contenedor">
+        <div className="login-contenedor animation-left">
           <form onSubmit={onSubmit}>
             <h1 className="mb-5 text-2xl lg:text-4xl font-extrabold text-white">Login</h1>
 
@@ -81,11 +84,31 @@ export const Login = () => {
 
             {/* Checkbox para recordar la contraseña */}
             <div className="remember-forgot flex justify-between items-center mb-5">
-              <label className="text-white text-sm">
-                <input type="checkbox" className="mr-2" /> Recordarme
+              <label className="flex items-center cursor-pointer group">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    className="sr-only"
+                    checked={isChecked}
+                    onChange={() => setIsChecked(!isChecked)}
+                  />
+                  <div className="w-10 h-5 bg-gray-700 rounded-full shadow-inner transition-colors duration-300 ease-in-out group-hover:bg-gray-600"></div>
+                  <div
+                    className={`absolute left-0 top-0 w-5 h-5 bg-gradient-to-r from-blue-400 to-blue-700 rounded-full shadow transition-transform duration-300 ease-in-out ${
+                      isChecked ? "transform translate-x-full" : ""
+                    }`}
+                  ></div>
+                </div>
+                <span className="ml-3 text-white text-sm group-hover:text-blue-400 transition-colors duration-300 ease-in-out">
+                  Recordarme
+                </span>
               </label>
-              <Link to="" className="text-blue-500 text-sm hover:underline">
+              <Link
+                href="/forgot-password"
+                className="text-blue-500 text-sm hover:text-blue-300 transition-colors duration-300 ease-in-out relative group"
+              >
                 Olvidé la contraseña
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </Link>
             </div>
 
@@ -107,8 +130,9 @@ export const Login = () => {
           <div className="register-link mt-5 text-center">
             <p className="text-sm text-white">
               No tienes una cuenta?{" "}
-              <Link to="/register" className="text-blue-500 hover:underline">
+              <Link to="/register"  className="text-blue-500 text-sm hover:text-blue-300 transition-colors duration-300 ease-in-out relative group">
                 Registrar
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </Link>
             </p>
           </div>

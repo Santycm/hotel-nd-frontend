@@ -5,7 +5,7 @@
 
 /*Estilos de login con @apply*/
 .input-login {
-  @apply w-full p-2.5 pr-10 text-lg bg-transparent border border-gray-300 rounded-lg text-white placeholder-gray-300;
+  @apply w-full p-2.5 pr-10 text-lg bg-transparent border border-gray-300 rounded-lg text-white placeholder-gray-300 shadow-lg hover:shadow-white duration-3000 hover:scale-110;
 }
 
 .icons-login {
@@ -13,7 +13,7 @@
 }
 
 .button-login {
-    @apply  w-full py-2.5 text-lg bg-white text-black rounded-lg font-bold hover:bg-blue-500 hover:text-white
+    @apply  w-full py-2.5 text-lg bg-white text-black rounded-lg font-bold hover:bg-blue-500 hover:text-white hover:shadow-blue-300 shadow-lg duration-3000
 }
 
 .login-contenedor{
@@ -29,10 +29,24 @@
 
 
 .input-register{
-    @apply w-96 p-2 m-2 border border-gray-300 bg-transparent text-white placeholder-gray-300 rounded-md
+    @apply w-full p-2.5 pr-10 text-lg bg-transparent border border-gray-300 rounded-lg text-white placeholder-gray-300 shadow-lg hover:shadow-white duration-3000 hover:scale-110 mb-2;
 }
 
 .button-register {
-    @apply  w-96  py-2.5 text-lg bg-white text-black rounded-lg font-bold hover:bg-blue-500 hover:text-white
+    @apply  w-96  py-2.5 text-lg bg-white rounded-lg font-bold hover:bg-blue-500 hover:text-white hover:shadow-blue-300 shadow-lg duration-3000
 }
 
+/*Animaciones que pueden ser reutilizadas*/
+
+.animation-rigth {
+    @apply animate-fade-right animate-once animate-duration-[2000ms] animate-delay-[2000ms]
+}
+
+
+.animation-left {
+    @apply animate-fade-left animate-once animate-duration-[2000ms] animate-delay-[2000ms]
+}
+
+.animation-up {
+    @apply animate-flip-up animate-once animate-duration-[2000ms] animate-delay-[2000ms]
+}

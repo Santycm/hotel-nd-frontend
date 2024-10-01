@@ -1,11 +1,10 @@
-import React from "react";
 import { useState } from "react";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 export const Slider = () => {
-    const [images, setImages] = useState([
+    const [images] = useState([
         { id: 1, src: "./src/assets/imgHotel1.jpg" },
         { id: 2, src: "./src/assets/imgHotel1.jpg" },
         { id: 3, src: "./src/assets/imgHotel1.jpg" },

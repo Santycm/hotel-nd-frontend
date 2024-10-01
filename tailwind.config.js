@@ -1,9 +1,14 @@
+import tailwindcssAnimated from "tailwindcss-animated";
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      transitionDuration: {
+        2000: "2000ms",
+        3000: "3000ms",
+      },
+    },
   },
-  plugins: [],
+  plugins: [tailwindcssAnimated],
 };
-
