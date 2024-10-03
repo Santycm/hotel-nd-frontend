@@ -1,6 +1,6 @@
 import { Slider } from "/src/components/Slider.jsx";
 import { Cards } from "/src/components/Cards.jsx";
-import { NavBar } from "/src/components/Nav.jsx"
+import  NavBar  from "../../components/Nav.jsx";
 import fondo from "../../assets/fondo.png";
 function Home() {
   
