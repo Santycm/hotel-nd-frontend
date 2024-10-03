@@ -1,5 +1,5 @@
 // Todos los componentes para que puedan ser mejor aprovechados en la web y que despue pueden ser llamados y este componente lo hizoo el monardo
-import React from "react";
+
 import { useState, useEffect } from "react";
 import {API_URL} from "../config.js";
 
