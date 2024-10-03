@@ -1,10 +1,12 @@
 import { Slider } from "/src/components/Slider.jsx";
 import { Cards } from "/src/components/Cards.jsx";
+import { NavBar } from "/src/components/Nav.jsx"
 import fondo from "../../assets/fondo.png";
 function Home() {
   
   return (
     <>
+      <NavBar  />
       <Slider />
       <section className="flex flex-col justify-center items-center mt-6 container mx-auto p-6 border-2 rounded-lg border-green-400">
         <h1 className="text-[28px]">Conocenos</h1>
