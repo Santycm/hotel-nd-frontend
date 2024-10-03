@@ -10,10 +10,10 @@ const OpcionMoreNav = () => {
       {/* Boton para mostrar el menu "Mas" */}
       <button
         type="button"
-        className="group  rounded-md text-white inline-flex items-center text-base font-medium  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="group rounded-md text-white inline-flex items-center text-base font-medium  "
         onClick={() => (setFlyerTwo(!flyerTwo), setFlyer(false))}
       >
-        <span>Mas</span>
+        <span className=" text-purple-600 hover:text-white hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">Reservas</span>
 
         {/* Icono que rota segun el estado del menu */}
         <svg
@@ -46,13 +46,13 @@ const OpcionMoreNav = () => {
       >
         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div className="relative grid gap-6  bg-white px-5 py-6 sm:gap-8 sm:p-8">
-            {/* Enlace al Help Center */}
+            {/* Enlace alhacer una reserva */}
             <a
               href="#"
               className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
             >
               <svg
-                className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                className="flex-shrink-0 h-8 w-8 text-indigo-600"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -67,16 +67,13 @@ const OpcionMoreNav = () => {
                 />
               </svg>
               <div className="ml-4">
-                <p className="text-base font-medium text-gray-900">
-                  Help Center
-                </p>
+                <p className="text-base font-medium text-gray-900">Hacer una reserva</p>
                 <p className="mt-1 text-sm text-gray-500">
-                  Get all of your questions answered in our forums or contact
-                  support.
+                  texto de reservas
                 </p>
               </div>
             </a>
-            {/* Enlace a Guias */}
+            {/* Enlace al ver una reserva */}
             <a
               href="#"
               className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
@@ -97,40 +94,14 @@ const OpcionMoreNav = () => {
                 />
               </svg>
               <div className="ml-4">
-                <p className="text-base font-medium text-gray-900">Guides</p>
+                <p className="text-base font-medium text-gray-900">Ver mis reservas</p>
                 <p className="mt-1 text-sm text-gray-500">
-                  Learn how to maximize our platform to get the most out of it.
+                  texto de ver reservas
                 </p>
               </div>
             </a>
-            {/* Enlace a Eventos*/}
-            <a
-              href="#"
-              className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-            >
-              <svg
-                className="flex-shrink-0 h-6 w-6 text-indigo-600"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <div className="ml-4">
-                <p className="text-base font-medium text-gray-900">Events</p>
-                <p className="mt-1 text-sm text-gray-500">
-                  See what meet-ups and other events we might be planning near
-                  you.
-                </p>
-              </div>
-            </a>
+            
+           
           </div>
         </div>
       </div>

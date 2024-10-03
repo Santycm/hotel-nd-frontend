@@ -10,7 +10,7 @@ export const Slider = () => {
         { id: 3, src: "./src/assets/imgHotel1.jpg" },
       ]);
     return (
-        <section className="container w-full h-[350px] mx-auto">
+        <section className="container w-full h-[350px] mx-auto mb-14">
       <Splide className="h-[350px] w-full"
           hasTrack={false}
           options={{

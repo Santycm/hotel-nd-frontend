@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import NavMovil from "./NavMovil";
 import OpcionMoreNav from "./OpcionMoreNav";
 
+
 const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative bg-slate-900 mb-4">
+    <div className="relative mb-4 " >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           {/*Logo de la aplicacion*/}
@@ -44,8 +45,8 @@ const NavBar = () => {
           </div>
           {/*Navegacion principal*/}
           <nav className="hidden md:flex space-x-10">
-            <a href="#" className="text-base font-medium text-white">Pricing</a>
-            <a href="#" className="text-base font-medium text-white">Docs</a>
+            <Link href="#" className="text-base font-medium text-purple-600 hover:text-white hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">No se que poner</Link>
+            <Link href="#" className="text-base font-medium text-purple-600 hover:text-white hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">No se que poner</Link>
             {/*Componente para opciones "mas"*/}
             <OpcionMoreNav />
           </nav>
@@ -53,7 +54,7 @@ const NavBar = () => {
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <Link
               to="/"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              className="text-white bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg  dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 hover:shadow-white duration-1000"
             >
               Cerrar Sesion
             </Link>
