@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
 
-export const Register = () => {
+const Register = () => {
   const navigation = useNavigate()
   const {
     register,
@@ -135,3 +135,5 @@ export const Register = () => {
     </section>
   );
 };
+
+export default Register

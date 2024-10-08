@@ -5,7 +5,7 @@ import { MdEmail, FaUserLock } from "../../assets/Images";
 import fondo from "../../assets/fondo.png";
 import { useState } from "react";
 
-export const Login = () => {
+const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
 
@@ -141,3 +141,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

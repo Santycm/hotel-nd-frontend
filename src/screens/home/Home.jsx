@@ -1,16 +1,13 @@
 import { Slider } from "/src/components/Slider.jsx";
 import { Cards } from "/src/components/Cards.jsx";
-import  NavBar  from "../../components/Nav.jsx";
+import NavBar from "../../components/NavBar.jsx";
 import fondo from "../../assets/fondo.png";
-import fondovv2 from "../../assets/fondovv2.png";
 
 function Home() {
-  
   return (
-    <div className="" style={{ backgroundImage: `url(${fondovv2})` }}>
-      <NavBar  />
+    <div className="bg-cover h-full min-h-screen bg-slate-900">
+      <NavBar />
       <Slider />
-     
       <section className="container mx-auto ">
         <h1  className="text-[28px] text-purple-200 font-bold text-2xl mb-4 text-center">Habitaciones en tendencias</h1>
         <Cards />
@@ -30,7 +27,6 @@ function Home() {
         </article>
       </section>
     </div>
-    
   );
 }
 

@@ -3,9 +3,10 @@ donde despues lo importamos al App.js para mejorar la modularidad
 */
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "../screens/login/Login.jsx";
-import { Register } from "../screens/register/Register.jsx";
+import  Login  from "../screens/login/Login.jsx";
+import Register  from "../screens/register/Register.jsx";
 import Home from "../screens/home/Home.jsx";
+import Reservation from "../screens/reservation/Reservation.jsx";
 
 function Rutas() {
   return (
@@ -14,6 +15,7 @@ function Rutas() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home/>} />
+        <Route path="/reservation" element={<Reservation/>} />
       </Routes>
     </BrowserRouter>
   );

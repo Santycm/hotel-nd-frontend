@@ -48,7 +48,7 @@ const OpcionMoreNav = () => {
           <div className="relative grid gap-6  bg-white px-5 py-6 sm:gap-8 sm:p-8">
             {/* Enlace alhacer una reserva */}
             <a
-              href="#"
+              href="/reservation"
               className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
             >
               <svg
