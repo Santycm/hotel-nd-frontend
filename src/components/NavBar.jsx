@@ -45,7 +45,7 @@ const NavBar = () => {
           </div>
           {/*Navegacion principal*/}
           <nav className="hidden md:flex space-x-10">
-            <Link href="#" className="text-base font-medium text-purple-600 hover:text-white hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">No se que poner</Link>
+            <a href="/admin" className="text-base font-medium text-purple-600 hover:text-white hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">Admin por el momento aqui</a>
             <Link href="#" className="text-base font-medium text-purple-600 hover:text-white hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">No se que poner</Link>
             {/*Componente para opciones "mas"*/}
             <OpcionMoreNav />

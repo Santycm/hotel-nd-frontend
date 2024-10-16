@@ -1,10 +1,10 @@
-import { CalendarIcon, UsersIcon } from "@heroicons/react/outline";
+import { CalendarIcon, UsersIcon, MailIcon } from "@heroicons/react/outline";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-//Falta algunas cosas para que pueda mandar los datos al backend 
+//Falta algunas cosas para que pueda mandar los datos al backend
 
 const Reservation = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Reservation = () => {
       reset();
       navigate("/verreservas");
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error desde el backend es:", error.response.data);
     } finally {
       setIsSubmitting(false);
     }
@@ -33,15 +33,42 @@ const Reservation = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 to-purple-600 p-5">
       <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-3xl font-extrabold mb-4 text-center text-purple-700">Reserva tu habitacion</h1>
+        {/*Titulo y descripcion de la pagina*/}
+        <h1 className="text-3xl font-extrabold mb-4 text-center text-purple-700">
+          Reserva tu habitacion
+        </h1>
         <p className="text-gray-600 mb-6 text-center">
           Asegurate de reservar tu habitacion con antelacion para disfrutar de
           una experiencia comoda y placentera
         </p>
 
+        {/*Formulario para la reserva*/}
         <form onSubmit={handleSubmit(onSubmit)}>
+
+          {/*Input de email de reserva*/}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-gray-800" htmlFor="date">
+              <MailIcon className="h-5 w-5 inline-block mr-1 text-purple-500" />Email para la reserva
+            </label>
+            <input
+              type="email"
+              id="user_email"
+              placeholder="Email"
+              {...register("user_email", { required: "El emial es requerido" })}
+              className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-purple-500 placeholder:text-black"
+            />
+
+            {errors.user_email && (
+              <span className="text-red-500 text-sm">
+                {errors.user_email.message}
+              </span>
+            )}
+          </div>
+
+          {/*Input de fecha de reserva*/}
+          <div className="mb-4">
+            <label
+              className="block text-sm font-medium mb-1 text-gray-800" htmlFor="date">
               <CalendarIcon className="h-5 w-5 inline-block mr-1 text-purple-500" />Fecha de Reserva
             </label>
             <input
@@ -56,7 +83,7 @@ const Reservation = () => {
               </span>
             )}
           </div>
-
+          {/*Input de tipo de habitacion de reserva*/}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-gray-800" htmlFor="roomType" >
               <UsersIcon className="h-5 w-5 inline-block mr-1 text-purple-500" />Tipo de Habitacion
@@ -72,11 +99,11 @@ const Reservation = () => {
               <option value="individual">Individual</option>
               <option value="doble">Doble</option>
               <option value="suite">Suite</option>
-
             </select>
-            {errors.roomType && (
+
+            {errors.suite_name && (
               <span className="text-red-500 text-sm">
-                {errors.roomType.message}
+                {errors.suite_name.message}
               </span>
             )}
           </div>
