@@ -10,10 +10,10 @@ const OpcionMoreNav = () => {
       {/* Boton para mostrar el menu "Mas" */}
       <button
         type="button"
-        className="group rounded-md text-white inline-flex items-center text-base font-medium  "
+        className="group  text-white bg-thirdColor rounded-xl px-4 inline-flex items-center text-base font-medium  "
         onClick={() => (setFlyerTwo(!flyerTwo), setFlyer(false))}
       >
-        <span className=" text-purple-600 hover:text-white hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">Reservas</span>
+        <span className=" text-secondColor hover:shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">Reservas</span>
 
         {/* Icono que rota segun el estado del menu */}
         <svg
