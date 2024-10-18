@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavMovil from "./NavMovil";
 import OpcionMoreNav from "./OpcionMoreNav";
 
 
 const NavBar = () => {
+  const redirect = useNavigate()
   const [open, setOpen] = useState(false);
+
+  const handleNavigation = () => {
+    redirect("/admin"); 
+  };
 
   return (
     <div className="relative mb-4 " >
@@ -45,7 +50,7 @@ const NavBar = () => {
           </div>
           {/*Navegacion principal*/}
           <nav className="hidden md:flex space-x-10">
-            <a href="/admin" className="text-base font-medium bg-thirdColor rounded-xl px-4 text-secondColor hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">Admin </a>
+            <div onClick={handleNavigation} className="text-base font-medium bg-thirdColor rounded-xl px-4 text-secondColor hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 cursor-pointer">Admin </div>
             <Link href="#" className="text-base font-medium bg-thirdColor rounded-xl px-4 text-secondColor hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">Ubicacion</Link>
             {/*Componente para opciones "mas"*/}
             <OpcionMoreNav />
