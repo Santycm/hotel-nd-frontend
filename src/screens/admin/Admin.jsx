@@ -54,10 +54,10 @@ const Admin = () => {
 
 
   return (
-    <div className="flex flex-col items-center py-10 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 mb-5">Admin</h1>
+    <div className="flex flex-col items-center py-10 bg-thirdColor min-h-screen">
+      <h1 className="text-3xl font-bold text-secondColor mb-5">Admin</h1>
 
-      <div className="bg-slate-800 p-8 rounded-md shadow-lg w-full max-w-md text-white">
+      <div className="bg-secondColor p-8 rounded-md shadow-lg w-full max-w-md text-white">
 
         {/*Formulario para crear una nueva suite*/}
 
@@ -76,7 +76,7 @@ const Admin = () => {
                 },
               })}
               placeholder="Nombre de la habitacion"
-              className="w-full px-4 py-2 rounded-md bg-gray-200 text-gray-900"
+              className="w-full px-4 py-2 rounded-md  text-gray-900"
             />
             {errors.name && (
               <span className="text-red-500 text-sm">
@@ -97,7 +97,7 @@ const Admin = () => {
                 },
               })}
               placeholder="Precio de la habitacion"
-              className="w-full px-4 py-2 rounded-md bg-gray-200 text-gray-900"
+              className="w-full px-4 py-2 rounded-md  text-gray-900"
             />
             {errors.price && (
               <span className="text-red-500 text-sm">
@@ -122,7 +122,7 @@ const Admin = () => {
                 },
               })}
               placeholder="Capacidad de la habitacion"
-              className="w-full px-4 py-2 rounded-md bg-gray-200 text-gray-900"
+              className="w-full px-4 py-2 rounded-md  text-gray-900"
             />
             {errors.capacity && (
               <span className="text-red-500 text-sm">
@@ -147,7 +147,7 @@ const Admin = () => {
                 },
               })}
               placeholder="Numero de habitaciones disponibles"
-              className="w-full px-4 py-2 rounded-md bg-gray-200 text-gray-900"
+              className="w-full px-4 py-2 rounded-md  text-gray-900"
             />
             {errors.count && (
               <span className="text-red-500 text-sm">
@@ -172,7 +172,7 @@ const Admin = () => {
                 },
               })}
               placeholder="Descripcion de la habitacion"
-              className="w-full px-4 py-2 rounded-md bg-gray-200 text-gray-900 h-24"
+              className="w-full px-4 py-2 rounded-md  text-gray-900 h-24"
             />
             {errors.description && (
               <span className="text-red-500 text-sm">
@@ -188,7 +188,7 @@ const Admin = () => {
               accept="image/*"
               multiple
               onChange={handleFileChange}
-              className="w-full px-4 py-2 rounded-md bg-gray-200 text-gray-900"
+              className="w-full px-4 py-2 rounded-md  text-gray-900"
             />
             {selectedFiles.length === 0 && (
               <span className="text-red-500 text-sm">
