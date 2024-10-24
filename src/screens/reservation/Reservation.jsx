@@ -31,10 +31,10 @@ const Reservation = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 to-purple-600 p-5">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-contentColor to-gray-800 p-5">
       <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
         {/*Titulo y descripcion de la pagina*/}
-        <h1 className="text-3xl font-extrabold mb-4 text-center text-purple-700">
+        <h1 className="text-3xl font-extrabold mb-4 text-center text-contentColor">
           Reserva tu habitacion
         </h1>
         <p className="text-gray-600 mb-6 text-center">
@@ -48,14 +48,14 @@ const Reservation = () => {
           {/*Input de email de reserva*/}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-gray-800" htmlFor="date">
-              <MailIcon className="h-5 w-5 inline-block mr-1 text-purple-500" />Email para la reserva
+              <MailIcon className="h-5 w-5 inline-block mr-1 text-contentColor" />Email para la reserva
             </label>
             <input
               type="email"
               id="user_email"
               placeholder="Email"
               {...register("user_email", { required: "El emial es requerido" })}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-purple-500 placeholder:text-black"
+              className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-contentColor placeholder:text-black"
             />
 
             {errors.user_email && (
@@ -69,13 +69,13 @@ const Reservation = () => {
           <div className="mb-4">
             <label
               className="block text-sm font-medium mb-1 text-gray-800" htmlFor="date">
-              <CalendarIcon className="h-5 w-5 inline-block mr-1 text-purple-500" />Fecha de Reserva
+              <CalendarIcon className="h-5 w-5 inline-block mr-1 text-contentColor" />Fecha de Reserva
             </label>
             <input
               type="date"
               id="date"
               {...register("date", { required: "La fecha es requerida" })}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-purple-500"
+              className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-contentColor"
             />
             {errors.date && (
               <span className="text-red-500 text-sm">
@@ -86,14 +86,14 @@ const Reservation = () => {
           {/*Input de tipo de habitacion de reserva*/}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 text-gray-800" htmlFor="roomType" >
-              <UsersIcon className="h-5 w-5 inline-block mr-1 text-purple-500" />Tipo de Habitacion
+              <UsersIcon className="h-5 w-5 inline-block mr-1 text-contentColor" />Tipo de Habitacion
             </label>
             <select
               id="suite_name"
               {...register("suite_name", {
                 required: "El tipo de habitacion es requerido",
               })}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-purple-500"
+              className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-contentColor"
             >
               <option value="">Seleccione un tipo</option>
               <option value="individual">Individual</option>
@@ -111,7 +111,7 @@ const Reservation = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 rounded-md transition duration-200 ${
+            className={`w-full bg-contentColor hover:bg-gray-800 text-white font-bold py-2 rounded-md transition duration-200 ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

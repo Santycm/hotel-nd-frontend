@@ -50,8 +50,8 @@ const NavBar = () => {
           </div>
           {/*Navegacion principal*/}
           <nav className="hidden md:flex space-x-10">
-            <div onClick={handleNavigation} className="text-base font-medium bg-thirdColor rounded-xl px-4 text-secondColor hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 cursor-pointer">Admin </div>
-            <Link href="#" className="text-base font-medium bg-thirdColor rounded-xl px-4 text-secondColor hover: shadow-lg hover:scale-125 duration-2000 hover:underline underline-purple-500 underline-offset-8 ">Ubicacion</Link>
+            <div onClick={handleNavigation} className="text-base font-medium bg-thirdColor rounded-xl px-4 text-secondColor hover: shadow-lg hover:scale-125 duration-2000  underline-offset-8 cursor-pointer">Admin </div>
+            <Link href="#" className="text-base font-medium bg-thirdColor rounded-xl px-4 text-secondColor hover: shadow-lg hover:scale-125 duration-2000 underline-offset-8 ">Ubicacion</Link>
             {/*Componente para opciones "mas"*/}
             <OpcionMoreNav />
           </nav>
@@ -59,7 +59,7 @@ const NavBar = () => {
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <Link
               to="/"
-              className="text-white bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg  dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 hover:shadow-white duration-1000"
+              className="text-secondColor bg-gradient-to-r from-thirdColor  to-thirdColor hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg  dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 hover:shadow-white duration-1000"
             >
               Cerrar Sesion
             </Link>

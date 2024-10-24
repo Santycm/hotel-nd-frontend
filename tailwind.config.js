@@ -8,6 +8,8 @@ export default {
         "mainColor": "#7728bb",
         "secondColor": "#005c28",
         "thirdColor": "#a8e6cf",
+        "contentColor": "#0c202d",
+        "contentColorv": "#20384C"
       },
       transitionDuration: {
         2000: "2000ms",

@@ -8,13 +8,13 @@ import Services from "../../components/Services.jsx"
 function Home() {
   return (
     <div className="bg-cover h-full min-h-screen bg-gray-200">
-      <article className="bg-mainColor">
+      <article className="bg-contentColor">
         <NavBar />
       </article>
       <section className="">
         <Slider />
       </section>
-      <section className="flex flex-col justify-center items-center  container mx-auto p-6 border-2 rounded-lg border-blue-400 bg-mainColor mt-6">
+      <section className="flex flex-col justify-center items-center  container mx-auto p-6 border-2 rounded-lg border-blue-400 bg-contentColor mt-6">
         <h1 className="text-[28px] text-thirdColor font-bold text-2xl mb-4">Conocenos</h1>
         <div className="w-2/4 border-b-4 border-thirdColor mb-10"></div>
         <article className="grid lg:grid-cols-3 max-w-6xl gap-10 ">
@@ -33,7 +33,7 @@ function Home() {
         <SliderCards />
       </section>
       
-      <section className="flex  flex-col items-center justify-center bg-mainColor p-7 ">
+      <section className="flex  flex-col items-center justify-center bg-contentColor p-7 ">
         <h2 className="text-3xl font-bold text-white">Nuestros Servicios</h2>
         <section className="container mx-auto">
           <Services />
