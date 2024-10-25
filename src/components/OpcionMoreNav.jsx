@@ -83,7 +83,7 @@ const OpcionMoreNav = () => {
             </div>
             {/* Enlace al ver una reserva */}
             <a
-              href="#"
+              href="/reservations"
               className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
             >
               <svg

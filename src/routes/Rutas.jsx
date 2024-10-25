@@ -7,6 +7,7 @@ import  Login  from "../screens/login/Login.jsx";
 import Register  from "../screens/register/Register.jsx";
 import Home from "../screens/home/Home.jsx";
 import Reservation from "../screens/reservation/Reservation.jsx";
+import MyReservation from "../screens/reservation/MyReservation.jsx";
 import Admin from "../screens/admin/Admin.jsx";
 
 function Rutas() {
@@ -17,6 +18,7 @@ function Rutas() {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home/>} />
         <Route path="/reservation" element={<Reservation/>} />
+        <Route path="/reservations" element={<MyReservation/>} />
         <Route path="/admin" element={<Admin/>} />
       </Routes>
     </BrowserRouter>
