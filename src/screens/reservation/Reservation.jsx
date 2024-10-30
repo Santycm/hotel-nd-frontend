@@ -17,22 +17,17 @@ const Reservation = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/create-reservation`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/create-reservation`,data );
       console.log(response.data);
       reset();
-      navigate("/verreservas");
+      navigate("/reservations");
     } catch (error) {
       console.error("Error desde el backend es:", error.response.data);
     } finally {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-contentColor to-gray-800 p-5">
       <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">

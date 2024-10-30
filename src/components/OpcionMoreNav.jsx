@@ -75,7 +75,7 @@ const OpcionMoreNav = () => {
                 />
               </svg>
               <div className="ml-4">
-                <p className="text-base font-medium text-gray-900">Hacer una reserva</p>
+                <p className="text-base font-medium text-gray-900 cursor-pointer">Hacer una reserva</p>
                 <p className="mt-1 text-sm text-gray-500">
                   texto de reservas
                 </p>
@@ -102,7 +102,7 @@ const OpcionMoreNav = () => {
                 />
               </svg>
               <div className="ml-4">
-                <p className="text-base font-medium text-gray-900">Ver mis reservas</p>
+                <p className="text-base font-medium text-gray-900 cursor-pointer">Ver mis reservas</p>
                 <p className="mt-1 text-sm text-gray-500">
                   texto de ver reservas
                 </p>
