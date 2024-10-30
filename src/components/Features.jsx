@@ -7,15 +7,15 @@ const Features = () => {
       description: "Esta es una habitación espaciosa con todas las comodidades necesarias para una estancia confortable."
     },
     {
-      imageUrl: "https://static.casadomo.com/media/2017/10/mood-rooms-habitaciones-hotel-emociones-huespedes.png",
+      imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/96/3e/22/exterior-view.jpg?w=1200&h=-1&s=1",
       description: "Habitación con vistas al mar y una decoración moderna."
     },
     {
-      imageUrl: "https://static.casadomo.com/media/2017/10/mood-rooms-habitaciones-hotel-emociones-huespedes.png",
+      imageUrl: "https://www.kayak.com.co/rimg/himg/fe/d3/3c/expedia_group-2388317-c96abc-511314.jpg?width=968&height=607&crop=true",
       description: "Habitación acogedora con una cama king size y baño privado."
     },
     {
-      imageUrl: "https://static.casadomo.com/media/2017/10/mood-rooms-habitaciones-hotel-emociones-huespedes.png",
+      imageUrl: "https://www.hola.com/horizon/landscape/f077d01fb697-habitaciones-hotel-9t-t.jpg",
       description: "Habitación de lujo con jacuzzi y balcón privado."
     }
   ];
@@ -25,7 +25,7 @@ const Features = () => {
       {rooms.map((room, index) => (
         <div 
           key={index} 
-          className={`grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-4 rounded-lg shadow-md mb-4 ${index % 2 !== 0 ? 'bg-mainColor' : 'bg-gray-100'}`}
+          className={`grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-4 rounded-lg shadow-md mb-4 ${index % 2 !== 0 ? 'bg-contentColor' : 'bg-gray-100'}`}
         >
           {index % 2 === 0 ? (
             <>

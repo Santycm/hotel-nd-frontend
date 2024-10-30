@@ -6,8 +6,8 @@ import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 export const Slider = () => {
     const [images] = useState([
         { id: 1, src: "https://climatetrade.com/wp-content/uploads/2023/05/Blog-ClimateTrade-1.png" },
-        { id: 2, src: "https://climatetrade.com/wp-content/uploads/2023/05/Blog-ClimateTrade-1.png" },
-        { id: 3, src: "https://climatetrade.com/wp-content/uploads/2023/05/Blog-ClimateTrade-1.png" },
+        { id: 2, src: "https://scriptumdesigns.com/wp-content/uploads/2022/04/arquitectura-hotelera.jpg" },
+        { id: 3, src: "https://www.hotelescolsubsidio.com/uploads/cms_apps/imagenes/Ajuste-de-pieza-noticia.jpg" },
       ]);
     return (
         <section className="container w-full h-[350px] mx-auto mb-14">

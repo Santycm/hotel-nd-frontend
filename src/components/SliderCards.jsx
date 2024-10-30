@@ -14,19 +14,19 @@ export const SliderCards = () => {
     },
     {
       id: 2,
-      src: "./src/assets/imgHotel1.jpg",
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLy2kkZQTzUeuWTBw-F-3Nudw4LEqiISeudA&s",
       title: "Suite familiar",
       description: "La habitación del hotel es un refugio acogedor y moderno, con paredes pintadas en tonos suaves que aportan tranquilidad. Una cama king-size, vestida con sábanas de algodón de alta calidad, ocupa el centro del espacio, flanqueada por mesas de noche con lámparas suaves. Un escritorio funcional se encuentra junto a una ventana, ofreciendo luz natural y una vista relajante.",
     },
     {
       id: 3,
-      src: "./src/assets/imgHotel1.jpg",
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt_C9cmnJsXlDMtRZQLk7qkpcTjrVX6bNXKA&s",
       title: "Suite Naranja",
       description: "La habitación del hotel es un refugio acogedor y moderno, con paredes pintadas en tonos suaves que aportan tranquilidad. Una cama king-size, vestida con sábanas de algodón de alta calidad, ocupa el centro del espacio, flanqueada por mesas de noche con lámparas suaves. Un escritorio funcional se encuentra junto a una ventana, ofreciendo luz natural y una vista relajante.",
     },
     {
       id: 4,
-      src: "./src/assets/imgHotel1.jpg",
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYYYEt0X9XQhCBeITroXFBJtjev9-CYPFbOw&s",
       title: "Suite Homo",
       description: "La habitación del hotel es un refugio acogedor y moderno, con paredes pintadas en tonos suaves que aportan tranquilidad. Una cama king-size, vestida con sábanas de algodón de alta calidad, ocupa el centro del espacio, flanqueada por mesas de noche con lámparas suaves. Un escritorio funcional se encuentra junto a una ventana, ofreciendo luz natural y una vista relajante.",
     },
