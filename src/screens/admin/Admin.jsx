@@ -2,8 +2,12 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
 import { CameraIcon } from "@heroicons/react/outline";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
+
+  const redirect = useNavigate()
+
   const {
     register: admin,
     handleSubmit,
@@ -13,11 +17,10 @@ const Admin = () => {
 
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-
   const onSubmit = handleSubmit(async (data) => {
     try {
       if (selectedFiles.length === 0) {
-        alert("Debe subir al menos una imagen.");
+        alert("Debe subir al menos una imagen");
         return;
       }
 
@@ -28,24 +31,23 @@ const Admin = () => {
       formData.append("count", data.count);
       formData.append("description", data.description);
 
-      // Adjuntar archivos seleccionados
+  
       selectedFiles.forEach((file) => {
-        formData.append("files", file);
+        formData.append("image_gallery", file); 
       });
 
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/createSuite`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/createSuite`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       console.log(response.data);
-      reset();
+      alert('Suite creada correctamente'); 
+      reset(); 
     } catch (error) {
-      console.log("Error en el backend es:", error);
+      console.error("Error en el backend es:", error);
+      alert('Fallo creacion de suite'); 
     }
   });
 
@@ -53,20 +55,20 @@ const Admin = () => {
     setSelectedFiles(Array.from(e.target.files));
   };
 
+  const handleNavigation =(path)=>{
+    redirect(path);
+  }
+
   return (
-    <div className="flex flex-col items-center py-10 bg-contentColor min-h-screen px-4">
-      <h1 className="text-3xl font-bold text-white mb-6 text-center">
+    <div className="min-h-screen bg-contentColor py-12 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+      <h1 className="text-3xl font-bold text-center text-gray-900 py-6 bg-gray-50 border-b border-gray-200">
         Panel de Administracion
       </h1>
-
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-lg text-gray-700">
-
-        {/* Formulario para crear una nueva suite */}
-        <form onSubmit={onSubmit} className="space-y-4">
-
-          {/* Input de nombre de la suite */}
+      <div className="p-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Nombre de la habitacion
             </label>
             <input
@@ -79,16 +81,15 @@ const Admin = () => {
                 },
               })}
               placeholder="Nombre de la habitacion"
-              className="w-full px-3 py-2 border rounded-md border-contentColor focus:ring focus:ring-indigo-300 text-gray-800 placeholder:text-gray-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
             />
             {errors.name && (
-              <span className="text-red-500 text-sm">{errors.name.message}</span>
+              <span className="text-red-500 text-sm mt-1">{errors.name.message}</span>
             )}
           </div>
 
-          {/* Input del precio de la suite */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Precio de la habitacion
             </label>
             <input
@@ -98,16 +99,15 @@ const Admin = () => {
                 min: { value: 1, message: "El precio debe ser mayor a 0" },
               })}
               placeholder="Precio de la habitacion"
-              className="w-full px-3 py-2 border rounded-md border-contentColor focus:ring focus:ring-indigo-300 text-gray-800 placeholder:text-gray-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
             />
             {errors.price && (
-              <span className="text-red-500 text-sm">{errors.price.message}</span>
+              <span className="text-red-500 text-sm mt-1">{errors.price.message}</span>
             )}
           </div>
 
-          {/* Input de la capacidad de la suite */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Capacidad
             </label>
             <input
@@ -118,16 +118,15 @@ const Admin = () => {
                 max: { value: 5, message: "Maximo 5 personas" },
               })}
               placeholder="Capacidad de la habitacion"
-              className="w-full px-3 py-2 border rounded-md border-contentColor focus:ring focus:ring-indigo-300 text-gray-800 placeholder:text-gray-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
             />
             {errors.capacity && (
-              <span className="text-red-500 text-sm">{errors.capacity.message}</span>
+              <span className="text-red-500 text-sm mt-1">{errors.capacity.message}</span>
             )}
           </div>
 
-          {/* Input del count de la suite */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Numero de habitaciones
             </label>
             <input
@@ -135,65 +134,68 @@ const Admin = () => {
               {...admin("count", {
                 required: "El numero de habitaciones es requerido",
                 min: { value: 1, message: "Debe haber al menos 1 habitacion" },
-                max: { value: 100, message: "Maximo 100 habitaciones" },
+                max: { value: 10, message: "Maximo 100 habitaciones" },
               })}
-              placeholder="Número de habitaciones disponibles"
-              className="w-full px-3 py-2 border rounded-md border-contentColor focus:ring focus:ring-indigo-300 text-gray-800 placeholder:text-gray-500"
+              placeholder="Numero de habitaciones disponibles"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
             />
             {errors.count && (
-              <span className="text-red-500 text-sm">{errors.count.message}</span>
+              <span className="text-red-500 text-sm mt-1">{errors.count.message}</span>
             )}
           </div>
 
-          {/* Input de la descripcion de la suite */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Descripcion
             </label>
             <textarea
               {...admin("description", {
                 required: "La descripcion es requerida",
                 minLength: { value: 10, message: "Minimo 10 caracteres" },
-                maxLength: { value: 50, message: "Maximo 50 caracteres" },
+                maxLength: { value: 100, message: "Maximo 100 caracteres" },
               })}
               placeholder="Descripcion de la habitacion"
-              className="w-full px-3 py-2 border rounded-md border-contentColor focus:ring focus:ring-indigo-300 text-gray-800 placeholder:text-gray-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
             />
             {errors.description && (
-              <span className="text-red-500 text-sm">{errors.description.message}</span>
+              <span className="text-red-500 text-sm mt-1">{errors.description.message}</span>
             )}
           </div>
 
-          {/* Input para subir imagen */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Subir imagenes
             </label>
             <div className="flex items-center space-x-2">
-              <CameraIcon className="w-6 h-6 text-contentColor" />
+              <CameraIcon className="w-6 h-6 text-gray-400" />
               <input
                 type="file"
                 accept="image/*"
                 multiple
                 onChange={handleFileChange}
-                className="w-full px-3 py-2 border rounded-md border-contentColor focus:ring focus:ring-indigo-300 text-gray-800"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
               />
             </div>
-            {selectedFiles.length === 0 && (
-              <span className="text-red-500 text-sm">Debe subir al menos una imagen</span>
-            )}
           </div>
 
-          {/* Boton para enviar el formulario */}
-          <button
-            type="submit"
-            className="w-full px-3 py-2 border rounded-md border-gray-300 text-white bg-contentColor hover:bg-indigo-700 focus:ring focus:ring-indigo-300"
-          >
-            <span>Crear suite</span>
-          </button>
+          <div className="space-y-4">
+            <button
+              type="submit"
+              className="w-full px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out"
+            >
+              Crear suite
+            </button>
+            <button 
+              onClick={() => handleNavigation("/allreservation")} 
+              className="w-full px-4 py-2 border border-gray-800 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out"
+            >
+              Ver reservas
+            </button>
+          </div>
         </form>
       </div>
     </div>
+  </div>
   );
 };
 

@@ -31,7 +31,7 @@ function Home() {
         </article>
       </section>
       <section className="container mx-auto mt-10">
-        <h1  className="text-[28px] text-secondColor font-bold text-2xl mb-4 text-center">Habitaciones en tendencias</h1>
+        <h1 id="res" className="text-[28px] text-secondColor font-bold text-2xl mb-4 text-center">Habitaciones disponibles para reservar justo ahora </h1>
         <SliderCards />
       </section>
       

@@ -4,7 +4,7 @@ import "./Register.css";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const navigation = useNavigate()
+  const navigation = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,8 +16,9 @@ const Register = () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, data);
       console.log(response.data); 
+      localStorage.setItem('token', response.data.token);
       reset();
-      navigation("/")
+      navigation("/");
     } catch (error) {
       console.error('Error:', error);
     }
@@ -28,20 +29,17 @@ const Register = () => {
   return (
     <section className="background flex items-center justify-around p-2">
       <div className="hidden md:block text-white text-center space-y-4 ml-8 animation-up">
-        <h2 className="text-2xl font-bold text-center">¿Por que registrarse?</h2>
+        <h2 className="text-2xl font-bold text-center">¿Por qué registrarse?</h2>
         <ul className="list-disc list-inside text-right">
-          <li>Todavia no se despues miro</li>
-          <li>Todavia no se despues miro</li>
-          <li>Todavia no se despues miro</li>
-          <li>Todavia no se despues miro</li>
+          <li>Todavía no se después miro</li>
+          <li>Todavía no se después miro</li>
+          <li>Todavía no se después miro</li>
+          <li>Todavía no se después miro</li>
         </ul>
       </div>
       <div className="flex flex-col justify-center items-center border-2 shadow-lg bg-transparent rounded-lg backdrop-blur-lg border-white/20 animation-up">
         <h1 className="font-extrabold text-4xl text-white my-2">Registro</h1>
-        <form
-          onSubmit={onSubmit}
-          className="flex flex-col justify-center items-center p-4"
-        >
+        <form onSubmit={onSubmit} className="flex flex-col justify-center items-center p-4">
           <input
             {...register("name", {
               required: "Nombre requerido",
@@ -130,10 +128,10 @@ const Register = () => {
             Registrar
           </button>
         </form>
+        <a href="/" className="text-white">Volver a Home</a>
       </div>
-      
     </section>
   );
 };
 
-export default Register
+export default Register;

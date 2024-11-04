@@ -9,6 +9,7 @@ import Home from "../screens/home/Home.jsx";
 import Reservation from "../screens/reservation/Reservation.jsx";
 import MyReservation from "../screens/reservation/MyReservation.jsx";
 import Admin from "../screens/admin/Admin.jsx";
+import AllReservation from "../screens/admin/AllReservation.jsx";
 
 function Rutas() {
   return (
@@ -20,6 +21,7 @@ function Rutas() {
         <Route path="/reservation" element={<Reservation/>} />
         <Route path="/reservations" element={<MyReservation/>} />
         <Route path="/admin" element={<Admin/>} />
+        <Route path="/allreservation" element={<AllReservation/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -18,12 +18,17 @@ const Login = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`,data);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        data
+      );
       console.log(response.data);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("email",response.data.email);
       reset();
       navigate("/home");
     } catch (error) {
-      console.error("Error:", error.response.data);
+      console.error("Error:", error.response?.data || "Un error ocurrio");
     }
   });
 
@@ -45,9 +50,11 @@ const Login = () => {
 
         <div className="login-contenedor animation-left">
           <form onSubmit={onSubmit}>
-            <h1 className="mb-5 text-2xl lg:text-4xl font-extrabold text-white">Login</h1>
+            <h1 className="mb-5 text-2xl lg:text-4xl font-extrabold text-white">
+              Login
+            </h1>
 
-            {/* Input de email del login */}
+            {/* Email input */}
             <div className="relative mb-5">
               <input
                 type="email"
@@ -64,7 +71,7 @@ const Login = () => {
               <MdEmail className="icons-login" />
             </div>
 
-            {/* Input de contraseña */}
+            {/* Password input */}
             <div className="relative mb-5">
               <input
                 type="password"
@@ -72,8 +79,7 @@ const Login = () => {
                   required: "Contraseña requerida",
                   minLength: {
                     value: 6,
-                    message:
-                      "La contraseña debe contener al menos 6 caracteres",
+                    message: "La contraseña debe contener al menos 6 caracteres",
                   },
                 })}
                 placeholder="Contraseña"
@@ -82,7 +88,7 @@ const Login = () => {
               <FaUserLock className="icons-login" />
             </div>
 
-            {/* Checkbox para recordar la contraseña */}
+            {/* Remember me checkbox */}
             <div className="remember-forgot flex justify-between items-center mb-5">
               <label className="flex items-center cursor-pointer group">
                 <div className="relative">
@@ -104,7 +110,7 @@ const Login = () => {
                 </span>
               </label>
               <Link
-                href="/forgot-password"
+                to="/forgot-password"
                 className="text-blue-500 text-sm hover:text-blue-300 transition-colors duration-300 ease-in-out relative group"
               >
                 Olvidé la contraseña
@@ -112,6 +118,7 @@ const Login = () => {
               </Link>
             </div>
 
+            {/* Error messages */}
             {errorMessages.length > 0 && (
               <div className="error-messages w-11/12 max-h-20 overflow-y-auto bg-transparent text-red-600 font-bold mb-2 text-left text-sm">
                 {errorMessages.map((msg, index) => (
@@ -120,17 +127,20 @@ const Login = () => {
               </div>
             )}
 
-            {/* Botón para iniciar sesión */}
+            {/* Login button */}
             <button className="button-login" type="submit">
               Login
             </button>
           </form>
 
-          {/* Link para registrar una cuenta */}
+          {/* Register link */}
           <div className="register-link mt-5 text-center">
             <p className="text-sm text-white">
               No tienes una cuenta?{" "}
-              <Link to="/register"  className="text-blue-500 text-sm hover:text-blue-300 transition-colors duration-300 ease-in-out relative group">
+              <Link
+                to="/register"
+                className="text-blue-500 text-sm hover:text-blue-300 transition-colors duration-300 ease-in-out relative group"
+              >
                 Registrar
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </Link>

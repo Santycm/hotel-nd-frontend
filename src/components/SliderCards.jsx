@@ -1,81 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-
+import axios from "axios";
 
 export const SliderCards = () => {
-  const [cards] = useState([
-    {
-      id: 1,
-      src: "./src/assets/imgHotel1.jpg",
-      title: "Suite precidencial",
-      description:
-        "La habitación del hotel es un refugio acogedor y moderno, con paredes pintadas en tonos suaves que aportan tranquilidad. Una cama king-size, vestida con sábanas de algodón de alta calidad, ocupa el centro del espacio, flanqueada por mesas de noche con lámparas suaves. Un escritorio funcional se encuentra junto a una ventana, ofreciendo luz natural y una vista relajante. El baño en suite cuenta con una ducha de vidrio y artículos de tocador de lujo. ",
-    },
-    {
-      id: 2,
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLy2kkZQTzUeuWTBw-F-3Nudw4LEqiISeudA&s",
-      title: "Suite familiar",
-      description: "La habitación del hotel es un refugio acogedor y moderno, con paredes pintadas en tonos suaves que aportan tranquilidad. Una cama king-size, vestida con sábanas de algodón de alta calidad, ocupa el centro del espacio, flanqueada por mesas de noche con lámparas suaves. Un escritorio funcional se encuentra junto a una ventana, ofreciendo luz natural y una vista relajante.",
-    },
-    {
-      id: 3,
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt_C9cmnJsXlDMtRZQLk7qkpcTjrVX6bNXKA&s",
-      title: "Suite Naranja",
-      description: "La habitación del hotel es un refugio acogedor y moderno, con paredes pintadas en tonos suaves que aportan tranquilidad. Una cama king-size, vestida con sábanas de algodón de alta calidad, ocupa el centro del espacio, flanqueada por mesas de noche con lámparas suaves. Un escritorio funcional se encuentra junto a una ventana, ofreciendo luz natural y una vista relajante.",
-    },
-    {
-      id: 4,
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYYYEt0X9XQhCBeITroXFBJtjev9-CYPFbOw&s",
-      title: "Suite Homo",
-      description: "La habitación del hotel es un refugio acogedor y moderno, con paredes pintadas en tonos suaves que aportan tranquilidad. Una cama king-size, vestida con sábanas de algodón de alta calidad, ocupa el centro del espacio, flanqueada por mesas de noche con lámparas suaves. Un escritorio funcional se encuentra junto a una ventana, ofreciendo luz natural y una vista relajante.",
-    },
-  ]);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    const fetchSuites = async () => {
+      try {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/suites`);
+        setCards(data.suites);
+      } catch (error) {
+        console.error("Error fetching suites:", error);
+      }
+    };
+
+    fetchSuites();
+  }, []);
+
   return (
     <section className="container mx-auto mb-14">
-      <Splide
-        className="w-full"
-        hasTrack={false}
-        options={{
-          type: "loop",
-          autoplay: true,
-          pauseOnHover: false,
-          resetProgress: false,
-          perPage: 3, // Display 3 cards per page
-          gap: "1rem", // Add gap between cards
-        }}
-        aria-label="Card Slider"
-      >
-        <div className="custom-wrapper relative">
-          <SplideTrack className="w-full">
-            {cards.map((card, index) => (
-              <SplideSlide key={index}>
-                <article className="p-4 bg-white shadow-md rounded-lg group">
-                  <img
-                    className="h-[200px] w-full object-cover rounded-t-lg"
-                    src={card.src}
-                    alt={card.description}
-                  />
-                  <div className="card-info p-4">
-                    <h2 className="text-xl font-bold mb-2">{card.title}</h2>
-                    <p className="text-gray-400 font-semibold line-clamp-6">
-                      {card.description}
-                    </p>
-                    <div className="flex items-center justify-center py-10 ">
-                      <a
-                        className="absolute translate-y-20 transition-all duration-300 ease-in-out group-hover:bg-blue-300 px-4 rounded-lg group-hover:translate-y-0 bg-transparent"
-                        href=""
-                      >
-                        Reservar ahora
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              </SplideSlide>
-            ))}
-          </SplideTrack>
-        </div>
-      </Splide>
-    </section>
+    <Splide
+      className="w-full"
+      hasTrack={false}
+      options={{
+        type: "loop",
+        autoplay: true,
+        pauseOnHover: false,
+        resetProgress: false,
+        perPage: 3,
+        gap: "1rem",
+      }}
+      aria-label="Card Slider"
+    >
+      <div className="custom-wrapper relative">
+        <SplideTrack className="w-full">
+          {cards.map((card) => (
+            <SplideSlide key={card.id_suite}>
+              <article className="flex flex-col h-full p-4 bg-white shadow-md rounded-lg group">
+                <img
+                  className="h-[200px] w-full object-cover rounded-t-lg"
+                  src={card.image_gallery[0] || ""}
+                  alt={card.description}
+                />
+                <div className="card-info flex-grow p-4">
+                  <h2 className="text-xl font-bold mb-2">{card.name}</h2>
+                  <p className="text-gray-500 font-semibold">${card.price}</p>
+                  <p className="text-gray-400 font-semibold">{card.description}</p>
+                  <p className="text-gray-400 font-semibold">Capacidad: {card.capacity}</p>
+                </div>
+                <div className="flex items-center justify-center py-4">
+                  <a
+                    className="relative bottom-[-50px] transition-all duration-300 ease-in-out group-hover:bottom-0 bg-secondColor text-white font-semibold px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 "
+                    href={`/reservation?ID=${card.id_suite}`}
+                  >
+                    Reservar ahora
+                  </a>
+                </div>
+              </article>
+            </SplideSlide>
+          ))}
+        </SplideTrack>
+      </div>
+    </Splide>
+  </section>
+  
   );
 };
