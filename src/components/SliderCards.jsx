@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const SliderCards = () => {
   const [cards, setCards] = useState([]);
+
+  const redirect = useNavigate()
 
   useEffect(() => {
     const fetchSuites = async () => {
@@ -18,6 +21,11 @@ export const SliderCards = () => {
 
     fetchSuites();
   }, []);
+
+  const handleReserve = (id) => {
+    // Aquí puedes agregar lógica adicional si es necesario
+    redirect(`/reservation?ID=${id}`); // Navega a la página de reserva con el ID
+  };
 
   return (
     <section className="container mx-auto mb-14">
@@ -51,12 +59,12 @@ export const SliderCards = () => {
                   <p className="text-gray-400 font-semibold">Capacidad: {card.capacity}</p>
                 </div>
                 <div className="flex items-center justify-center py-4">
-                  <a
+                  <button
                     className="relative bottom-[-50px] transition-all duration-300 ease-in-out group-hover:bottom-0 bg-secondColor text-white font-semibold px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 "
-                    href={`/reservation?ID=${card.id_suite}`}
+                     onClick={() => handleReserve(card.id_suite)}
                   >
                     Reservar ahora
-                  </a>
+                  </button>
                 </div>
               </article>
             </SplideSlide>
