@@ -1,4 +1,4 @@
-import Rutas from "./routes/Rutas"; //Importacion de las rutas
+import Rutas from "./routes/Rutas"; 
 
 function App() {
   return (

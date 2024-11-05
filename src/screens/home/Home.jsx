@@ -4,8 +4,8 @@ import NavBar from "../../components/NavBar.jsx";
 import fondo from "../../assets/fondo.png";
 import Features from "../../components/Features.jsx";
 import Services from "../../components/Services.jsx"
-import Footer from "../../components/footer.jsx";
 import Comments from "../../components/Comments.jsx";
+import Footerr from  "../../components/Footerr.jsx";
 
 function Home() {
   return (
@@ -47,7 +47,7 @@ function Home() {
       <section className="container mx-auto">
         <Comments />
       </section>
-      <Footer />
+      <Footerr/>
     </div>
   );
 }
