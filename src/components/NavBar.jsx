@@ -20,7 +20,7 @@ const NavBar = () => {
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="#">
               <span className="sr-only">Workflow</span>
-              <img className="h-8 w-auto sm:h-10"src="/src/assets/fondo.png"alt=""/>
+              <img className="h-8 w-auto sm:h-10"src="./src/assets/fondo.png"alt=""/>
             </a>
           </div>
           {/*Boton para abrir el menu movil*/}

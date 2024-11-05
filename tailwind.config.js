@@ -15,6 +15,10 @@ export default {
         2000: "2000ms",
         3000: "3000ms",
       },
+      screens: {
+        'cell': '500px', 
+        'celu': '450px', 
+      },
     },
   },
   plugins: [tailwindcssAnimated],

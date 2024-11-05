@@ -1,6 +1,15 @@
 /* eslint-disable react/prop-types */  // ==> Es para desactivar los propsTypes
+
+import { useNavigate } from "react-router-dom";
+
 // Define el componente NavMovil que recibe 2 props
 const NavMovil = ({ open, setOpen }) => { 
+
+  const redirect = useNavigate()
+
+  const handleNavigation = (path) =>{
+    redirect(path)
+  }
     return (
       <div
         className={ 
@@ -15,7 +24,7 @@ const NavMovil = ({ open, setOpen }) => {
               <div>
                 <img
                   className="h-8 w-auto"
-                  src="/src/assets/fondo.png"
+                  src="./src/assets/fondo.png"
                   alt="Workflow"
                 />
               </div>
@@ -49,7 +58,7 @@ const NavMovil = ({ open, setOpen }) => {
   
             <div className="mt-6"> 
               <nav className="grid gap-y-8"> 
-                <a href="#" className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50" >
+                <button onClick={()=>handleNavigation("/admin")} className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50" >
                   <svg
                     className="flex-shrink-0 h-6 w-6 text-indigo-600" 
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,9 +74,9 @@ const NavMovil = ({ open, setOpen }) => {
                       d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                     />
                   </svg>
-                  <span className="ml-3 text-base font-medium text-gray-900"> Analytics</span>
-                </a>
-                <a href="#" className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50" 
+                  <span className="ml-3 text-base font-medium text-gray-900"> Admin</span>
+                </button>
+                <a href="#res"  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50" 
                 >
                   <svg
                     className="flex-shrink-0 h-6 w-6 text-indigo-600" 
@@ -84,7 +93,7 @@ const NavMovil = ({ open, setOpen }) => {
                       d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                     />
                   </svg>
-                  <span className="ml-3 text-base font-medium text-gray-900">Engagement</span>
+                  <span className="ml-3 text-base font-medium text-gray-900">Reservas</span>
                 </a>
               </nav>
             </div>
@@ -93,8 +102,8 @@ const NavMovil = ({ open, setOpen }) => {
           {/*Contenedor para enlaces adicionales */}
           <div className="py-6 px-5 space-y-6"> 
             <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-              <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">Pricing</a>
-              <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">Docs</a>
+              <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">Comentarios</a>
+              <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">Redes Sociales</a>
             </div>
             <div>
               <a href="#" 
