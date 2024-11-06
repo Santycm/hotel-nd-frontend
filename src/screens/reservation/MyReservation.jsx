@@ -1,151 +1,131 @@
-import { useState } from 'react';
+import { useState, useEffect  } from "react";
 import { Card, CardContent, Typography, Grid, TextField, Button, MenuItem } from '@mui/material';
-
-const reservations = [
-    {
-        id: 1,
-        description: 'Reserva en Hotel California',
-        date: '2023-10-15',
-        guests: 2,
-        suiteType: 'Deluxe',
-        customerId: '1234567890',
-    },
-    {
-        id: 2,
-        description: 'Reserva en Grand Hotel',
-        date: '2023-11-20',
-        guests: 4,
-        suiteType: 'Standard',
-        customerId: '0987654321',
-    },
-    // Agrega más reservas según sea necesario
-];
+import axios from "axios";
 
 const MyReservation = () => {
-    const [filteredReservations, setFilteredReservations] = useState(reservations);
-    const [filterDate, setFilterDate] = useState('');
-    const [filterSuiteType, setFilterSuiteType] = useState('');
-    const [searchCustomerId, setSearchCustomerId] = useState('');
+  const [reservations, setReservations] = useState([]);
 
-    const handleFilter = () => {
-        let filtered = reservations;
-        if (filterDate) {
-            filtered = filtered.filter(reservation => reservation.date === filterDate);
+  const getUserEmailFromToken = () => {
+    const token = localStorage.getItem("token"); // Asumiendo que el token está almacenado bajo la clave 'token'
+    if (!token) {
+      alert("No hay un token almacenado, por favor inicia sesión");
+      window.location.href = "/";
+    }
+
+    try {
+      const decodedToken = jwt_decode(token);
+      return decodedToken.email; // Asumiendo que el email está en el payload del token
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      return null;
+    }
+  };
+
+  const getMyReservations = async () => {
+    const userEmail = getUserEmailFromToken();
+    if (userEmail) {
+      console.log("User email:", userEmail);
+      // Puedes usar userEmail aquí según sea necesario
+    }
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/my-reservations`,
+        { user_email: userEmail },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
-        if (filterSuiteType) {
-            filtered = filtered.filter(reservation => reservation.suiteType === filterSuiteType);
-        }
-        setFilteredReservations(filtered);
-    };
+      );
+      setReservations(response.data.message);
+      // Aquí puedes manejar la respuesta, por ejemplo, renderizar la información en la página
+    } catch (error) {
+      console.error("Error fetching my reservations:", error);
+    }
+  };
+  useEffect(() => {
+    getMyReservations();
+  }, []);
 
-    const handleSearch = () => {
-        const foundReservation = reservations.filter(reservation => reservation.customerId === searchCustomerId);
-        setFilteredReservations(foundReservation);
-    };
-
-    const handleDelete = (id) => {
-        const updatedReservations = filteredReservations.filter(reservation => reservation.id !== id);
-        setFilteredReservations(updatedReservations);
-    };
-
-    return (
-        <div className="p-6 bg-gradient-to-br from-contentColor to-gray-800 min-h-screen flex items-center justify-center">
-            <Card className="w-full max-w-4xl shadow-lg">
-                <CardContent>
-                    <Typography variant="h4" component="h1" className="mb-6 text-center text-blue-600">
-                        Mis Reservas
-                    </Typography>
-                    <div className="mb-6">
-                        <Typography variant="h6" component="h2" className="mb-4 text-blue-800">
-                            Filtrar Reservas
-                        </Typography>
-                        <div className="flex flex-wrap gap-4">
-                            <TextField
-                                label="Fecha"
-                                type="date"
-                                value={filterDate}
-                                onChange={(e) => setFilterDate(e.target.value)}
-                                InputLabelProps={{ shrink: true }}
-                                className="mr-4"
-                            />
-                            <TextField
-                                label="Tipo de Suite"
-                                select
-                                value={filterSuiteType}
-                                onChange={(e) => setFilterSuiteType(e.target.value)}
-                                className="mr-4"
-                            >
-                                <MenuItem value="Standard">Standard</MenuItem>
-                                <MenuItem value="Deluxe">Deluxe</MenuItem>
-                            </TextField>
-                            <Button variant="contained" color="primary" onClick={handleFilter}>
-                                Filtrar
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="mb-6">
-                        <Typography variant="h6" component="h2" className="mb-4 text-blue-800">
-                            Buscar Reserva
-                        </Typography>
-                        <div className="flex flex-wrap gap-4">
-                            <TextField
-                                label="Buscar por Cédula"
-                                value={searchCustomerId}
-                                onChange={(e) => setSearchCustomerId(e.target.value)}
-                                className="mr-4"
-                            />
-                            <Button variant="contained" color="primary" onClick={handleSearch}>
-                                Buscar
-                            </Button>
-                        </div>
-                    </div>
-                    <Grid container spacing={3}>
-                        {filteredReservations.map((reservation) => (
-                            <Grid item xs={12} sm={6} md={4} key={reservation.id}>
-                                <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-                                    <CardContent>
-                                        <Typography variant="h6" component="div" className="text-blue-800">
-                                            {reservation.description}
-                                        </Typography>
-                                        <Typography color="textSecondary" className="mt-2">
-                                            Fecha: {reservation.date}
-                                        </Typography>
-                                        <Typography color="textSecondary" className="mt-2">
-                                            Número de huéspedes: {reservation.guests}
-                                        </Typography>
-                                        <Typography color="textSecondary" className="mt-2">
-                                            Tipo de Suite: {reservation.suiteType}
-                                        </Typography>
-                                        <Typography color="textSecondary" className="mt-2">
-                                            Cédula del Cliente: {reservation.customerId}
-                                        </Typography>
-                                        <div className="mt-4 flex space-x-4">
-                                            <Button
-                                                variant="contained"
-                                                color="secondary"
-                                                className="!bg-blue-800"
-                                                onClick={() => handleDelete(reservation.id)}
-                                            >
-                                                Modificar reserva
-                                            </Button>
-                                            <Button
-                                                variant="contained"
-                                                color="secondary"
-                                                className="!bg-blue-800"
-                                                onClick={() => handleDelete(reservation.id)}
-                                            >
-                                                Cancelar Reserva
-                                            </Button>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </CardContent>
-            </Card>
+  return (
+    <section className="w-full h-[100vh] bg-contentColor ">
+      <div className="container mx-auto  ">
+        <h1 className="text-2xl font-bold mb-4 text-white text-center">
+          Mis Reservas
+        </h1>
+        <div className="bg-white shadow-md rounded-lg lg:p-4">
+          <table className="min-w-full bg-white">
+            <thead>
+              <tr>
+                <th className="py-2 px-4 border-b hidden lg:block">ID</th>
+                <th className="py-2 px-4 border-b">Fecha</th>
+                <th className="py-2 px-4 border-b">Suite</th>
+                <th className="py-2 px-4 border-b">Precio</th>
+                <th className="py-2 px-4 border-b">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reservations.map((reservation) => (
+                <tr
+                  key={reservation.id_reservation}
+                  className="hover:bg-gray-100 text-center "
+                >
+                  <td className="py-2 px-4 border-b text-center hidden lg:block">
+                    {reservation.id_reservation}
+                  </td>
+                  <td className="py-2 px-4 border-b text-center">
+                    {new Date(
+                      reservation.date_reservation
+                    ).toLocaleDateString()}
+                  </td>
+                  <td className="py-2 px-4 border-b text-center">
+                    {reservation.name}
+                  </td>
+                  <td className="py-2 px-4 border-b text-center">
+                    {reservation.price}
+                  </td>
+                  <td className="py-2 px-4 border-b text-center">
+                    <button
+                      className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700"
+                      onClick={async () => {
+                        try {
+                          const response = await axios.post(
+                            `${
+                              import.meta.env.VITE_API_URL
+                            }/api/delete-reservation`,
+                            { id_reservation: reservation.id_reservation },
+                            {
+                              headers: {
+                                Authorization: `Bearer ${localStorage.getItem(
+                                  "token"
+                                )}`,
+                              },
+                            }
+                          );
+                          console.log(response.data);
+                          setReservations(
+                            reservations.filter(
+                              (r) =>
+                                r.id_reservation !== reservation.id_reservation
+                            )
+                          );
+                          // Recargar la página si es necesario
+                          // window.location.reload();
+                        } catch (error) {
+                          console.error("Error cancelling reservation:", error);
+                        }
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default MyReservation;
