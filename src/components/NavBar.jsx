@@ -1,29 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import NavMovil from "./NavMovil";
 import OpcionMoreNav from "./OpcionMoreNav";
 
-
 const NavBar = () => {
-  const redirect = useNavigate()
   const [open, setOpen] = useState(false);
+  const [userName, setUserName] = useState(""); 
+  const redirect = useNavigate();
 
   const handleNavigation = () => {
     redirect("/admin"); 
   };
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+      
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/profile`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`, 
+          },
+        });
+
+        setUserName(response.data.message.name);
+      } catch (error) {
+        console.error(error);
+        window.location.href = "/";
+      }
+    };
+
+    fetchUserData(); 
+  }, []);
+
   return (
-    <div className="relative mb-4 " >
+    <div className="relative mb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           {/*Logo de la aplicacion*/}
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="#">
               <span className="sr-only">Workflow</span>
-              <img className="h-8 w-auto sm:h-10"src="./src/assets/fondo.png"alt=""/>
+              <img className="h-8 w-auto sm:h-10" src="./src/assets/fondo.png" alt="Logo" />
             </a>
+            {/* Mostrar el nombre del usuario al lado de la imagen */}
+            {userName && (
+              <span className="ml-4 text-lg font-semibold text-thirdColor">{userName}</span>
+            )}
           </div>
-          {/*Boton para abrir el menu movil*/}
+          {/* Botón para abrir el menú móvil */}
           <div className="-mr-2 -my-2 md:hidden">
             <button
               type="button"
@@ -55,7 +80,7 @@ const NavBar = () => {
             {/*Componente para opciones "mas"*/}
             <OpcionMoreNav />
           </nav>
-          {/*Boton para cerrar sesion*/}
+          {/* Boton para cerrar sesion */}
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <Link
               to="/"
@@ -66,7 +91,6 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      {/*Componente de navegacion movil y las 2 props*/}
       <NavMovil open={open} setOpen={setOpen} />
     </div>
   );

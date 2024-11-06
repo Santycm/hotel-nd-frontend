@@ -31,10 +31,10 @@ const Register = () => {
       <div className="hidden md:block text-white text-center space-y-4 ml-8 animation-up">
         <h2 className="text-2xl font-bold text-center">¿Por qué registrarse?</h2>
         <ul className="list-disc list-inside text-right">
-          <li>Todavía no se después miro</li>
-          <li>Todavía no se después miro</li>
-          <li>Todavía no se después miro</li>
-          <li>Todavía no se después miro</li>
+          <li>Las mjores habitaciones pa moteliar..</li>
+          <li>Las mejores ubicaciones en la ciudad</li>
+          <li>La mejor atencion que podes esperar</li>
+        
         </ul>
       </div>
       <div className="flex flex-col justify-center items-center border-2 shadow-lg bg-transparent rounded-lg backdrop-blur-lg border-white/20 animation-up">
@@ -128,7 +128,7 @@ const Register = () => {
             Registrar
           </button>
         </form>
-        <a href="/" className="text-white">Volver a Home</a>
+        <a href="/" className="text-white hover:underline ">Volver al login</a>
       </div>
     </section>
   );
