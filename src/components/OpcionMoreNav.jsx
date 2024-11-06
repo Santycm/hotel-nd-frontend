@@ -1,14 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const OpcionMoreNav = () => {
+
+  const redirect = useNavigate();
 
 
   const [setFlyer] = React.useState(false);
   const [flyerTwo, setFlyerTwo] = React.useState(false);
 
-
-
+  const handleNavigate =(path)=>{
+    redirect(path)
+  }
 
   return (
     <div className="relative">
@@ -79,8 +83,8 @@ const OpcionMoreNav = () => {
               </div>
             </a>
             {/* Enlace al ver una reserva */}
-            <a
-              href="/reservations"
+            <button
+              onClick={()=>handleNavigate("/reservations")}
               className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
             >
               <svg
@@ -104,7 +108,7 @@ const OpcionMoreNav = () => {
                   texto de ver reservas
                 </p>
               </div>
-            </a>
+            </button>
             
            
           </div>

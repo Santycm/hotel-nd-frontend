@@ -95,6 +95,24 @@ const NavMovil = ({ open, setOpen }) => {
                   </svg>
                   <span className="ml-3 text-base font-medium text-gray-900">Reservas</span>
                 </a>
+                <button onClick={()=>handleNavigation("/reservations")} className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50" >
+                <svg
+                    className="flex-shrink-0 h-6 w-6 text-indigo-600" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                    />
+                  </svg>
+                  <span className="ml-3 text-base font-medium text-gray-900"> Ver reservas</span>
+                </button>
               </nav>
             </div>
           </div>
