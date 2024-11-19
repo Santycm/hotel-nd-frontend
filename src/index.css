@@ -1,3 +1,52 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+/*Estilos de login con @apply*/
+.input-login {
+  @apply w-full p-2.5 pr-10 text-lg bg-transparent border border-gray-300 rounded-lg text-white placeholder-gray-300 shadow-lg hover:shadow-white duration-3000 hover:scale-110;
+}
+
+.icons-login {
+    @apply absolute top-1/2 right-3 transform -translate-y-1/2 text-2xl text-white
+}
+
+.button-login {
+    @apply  w-full py-2.5 text-lg bg-white text-black rounded-lg font-bold hover:bg-blue-500 hover:text-white hover:shadow-blue-300 shadow-lg duration-3000
+}
+
+.login-contenedor{
+    @apply  bg-transparent p-10 rounded-lg shadow-lg max-w-xs w-full text-center border-2 border-white/20 backdrop-blur-lg flex-1
+}
+
+.login-screen{
+    @apply flex justify-center items-center h-screen bg-cover bg-center
+}
+
+
+/*Estilos de register con @apply*/
+
+
+.input-register{
+    @apply w-full p-2.5 pr-10 text-lg bg-transparent border border-gray-300 rounded-lg text-white placeholder-gray-300 shadow-lg hover:shadow-white duration-3000 hover:scale-110 mb-2;
+}
+
+.button-register {
+    @apply  w-96  py-2.5 text-lg bg-white rounded-lg font-bold hover:bg-blue-500 hover:text-white hover:shadow-blue-300 shadow-lg duration-3000
+}
+
+/*Animaciones que pueden ser reutilizadas*/
+
+.animation-rigth {
+    @apply animate-fade-right animate-once animate-duration-[2000ms] animate-delay-[2000ms]
+}
+
+
+.animation-left {
+    @apply animate-fade-left animate-once animate-duration-[2000ms] animate-delay-[2000ms]
+}
+
+.animation-up {
+    @apply animate-flip-up animate-once animate-duration-[2000ms] animate-delay-[2000ms]
+}
